@@ -1,0 +1,46 @@
+% Biblatex settings - http://tex.stackexchange.com/questions/134258/harvard-style-bibliography-with-biblatex-almost-but-not-quite
+\usepackage[
+backend=biber,
+useprefix=true,
+maxcitenames=3,
+maxbibnames=99,
+style=authoryear,
+dashed=false,
+hyperref=true,
+url=false
+]{biblatex}
+
+% Harvard Reference System stuff:
+\DeclareNameAlias{author}{last-first}
+\renewcommand*{\mkbibnamefirst}[1]{{\let~\,#1}} % insert thin spaces between author initials
+\renewcommand*{\nameyeardelim}{\addcomma\addspace} % insert a comma between author and year in-text citations
+\renewcommand*{\newunitpunct}{\addcomma\addspace} % comma as separator in bibliography, not full stop
+\setlength\bibitemsep{1.5\itemsep} % increase spacing between entries in bibliography
+\renewbibmacro{in:}{} % remove 'in:' preceding article title
+\renewcommand*{\bibinitdelim}{} % Space between author initials
+
+% Place volume number within parentheses:
+\renewbibmacro*{volume+number+eid}{
+    \printfield{volume}
+    \setunit*{\addnbspace}% NEW (optional); there's also \addnbthinspace
+    \printfield{number}
+    \setunit{\addcomma\space}
+    \printfield{eid}}
+\DeclareFieldFormat[article]{number}{\mkbibparens{#1}}
+
+% No punctuation after date in reference
+\usepackage{xpatch}\xapptobibmacro{date+extrayear}{\nopunct}{}{}
+
+% If online resource, show url
+\AtEveryBibitem{%
+    \ifentrytype{online}{%
+    }{%
+        \clearfield{url}%
+        \clearfield{urldate}%
+    }%
+}
+
+
+% Use \cite for referencing name and \pcite for author-year
+\let\cite\textcite
+\let\pcite\parencite

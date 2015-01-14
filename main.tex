@@ -1,0 +1,48 @@
+% 2014-11-12
+% DM1602 Materials Report
+
+\documentclass[12pt,twocolumn, a4paper, titlepage]{article}
+\usepackage[top=2.8cm, bottom=2.8cm, left = 2cm, right=2cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{blindtext}
+\usepackage[none]{hyphenat}
+\usepackage[hidelinks]{hyperref}
+\usepackage{amssymb} % Symbols
+\usepackage{chemfig}
+\usepackage{graphicx}
+
+\usepackage{siunitx} % Units
+\sisetup{per-mode=symbol} % Sort out \per
+
+\input{harvard_settings.tex}
+\addbibresource{refs.bib}
+
+% Stop right-justifying section headings
+\usepackage{sectsty}
+\allsectionsfont{\raggedright}
+
+% Make sections start a new page
+%\let\stdsection\section
+%\renewcommand\section{\newpage\stdsection}
+
+\graphicspath{images/}
+
+\begin{document}
+\input{0_titlepage}
+
+\tableofcontents
+
+\clearpage
+\input{1_workshop_experience}
+
+\input{2_mechanics}
+
+\input{3_ropes}
+
+\input{4_pe}
+
+\input{5_conclusion}
+
+\clearpage
+\printbibliography[heading=bibintoc]
+\end{document}

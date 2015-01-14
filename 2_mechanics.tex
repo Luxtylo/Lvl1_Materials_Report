@@ -1,0 +1,40 @@
+\section{Mechanics of hammock suspension}
+\label{sec:mechanics}
+I will attempt to keep the mechanics brief as this report is intended to focus on the materials side of hammock suspension. Forces involved in hammock suspension are much larger than one would expect. This is due to the angles involved. If we simplify a hammock to a model consisting of two ropes holding up a weight (Figure \ref{fig:hammock}), we can calculate a rough value for the tension in the ropes.
+
+\begin{figure}
+\centering
+\begin{tikzpicture}
+\coordinate[](T1) at (0,3);
+\coordinate[](T2) at (6,3);
+\coordinate[](W) at (3,0);
+\coordinate[](C) at (3,2);
+\coordinate[](H_start) at (4,3);
+\coordinate[](H_end) at (7,3);
+
+% Draw force arrows
+\draw [thick,->] (C) -- (T1) node[anchor=north, yshift=-0.15cm] {$T_1$};
+\draw [thick,->] (C) -- (T2) node[anchor=north, yshift=-0.15cm] {$T_2$};
+\draw [thick,->] (C) -- (W) node[anchor=west] {$W$};
+\draw [thick, dashed] (H_start) -- (H_end);
+
+% Draw arc
+\draw (4,3) arc (180:216.8:1cm) node[midway, left] {$\theta$};
+
+\end{tikzpicture}
+\caption{Simplified diagram of hammock}
+\label{fig:hammock}
+\end{figure}
+
+Weight W is opposed by the y-components of the two rope tensions, such that each $T_y = 0.5W$. Naming the angle between the rope and the horizontal $\theta$, we can see that:
+$$\sin\theta = \frac{T_y}{T}$$
+$$\therefore T = \frac{T_y}{\sin\theta} = \frac{0.5 \times W}{\sin\theta}$$
+
+Assuming an average British male weight of \SI{83.6}{\kilogram} \pcite{ons_average_2010} and a hang angle of \ang{30} -- the recommended angle for comfort in a hammock \pcite{dream_hang} -- we can calculate the tension in the ropes.
+$$T = \frac{0.5 \times 83.6 \times 9.81}{\sin30}$$
+$$\therefore T = \SI{820}{\newton}$$
+This seems a fairly reasonable load, but it quickly grows greater as the angle $\theta$ decreases---reaching \SI{2360}{\newton} at only \ang{10}. This could present a problem to the rope if the hammock is hung improperly, and is especially the case when presented with the dynamic loading caused by jumping or falling into the hammock.
+
+With a \SI{5}{\milli\metre} diameter rope of cross-sectional area \SI{19.6}{\milli\metre\squared}, this means a stress of $\SI{2360}{\newton} \div \SI{1.96e-5}{\metre\squared} = \SI{120}{\mega\pascal}$.
+%\subsection{Knots and splices}
+
